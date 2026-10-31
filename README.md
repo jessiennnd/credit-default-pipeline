@@ -15,7 +15,7 @@ A Taiwanese card issuer (2005, illustrative scenario) is losing money to default
 |Request|Answered with|
 |-|-|
 |One-off questions from Credit, Collections and Finance|SQL in [`sql/`](sql/), results in [`docs/findings.md`](docs/findings.md)|
-|Expected loss, risk tiers, review list|dbt models in BigQuery ([`credit\_dbt/`](credit_dbt/))|
+|Expected loss, risk tiers, review list|dbt models in BigQuery ([`credit_dbt/`](credit_dbt/))|
 |Monthly monitoring|Power BI dashboard, two pages|
 
 ## Headline findings
@@ -27,23 +27,23 @@ A Taiwanese card issuer (2005, illustrative scenario) is losing money to default
 ## How it works
 
 ```
-CSV -> BigQuery (credit\_raw) -> dbt: staging -> intermediate -> marts (star schema)
+CSV -> BigQuery (credit_raw) -> dbt: staging -> intermediate -> marts (star schema)
                                                               -> Power Query -> Power BI
 ```
 
 |Layer|Models|Job|
 |-|-|-|
-|Staging|`stg\_customers`, `stg\_customer\_month`|Apply data quality fixes; reshape six month columns into rows|
-|Intermediate|`int\_customer\_features`, `int\_customer\_risk`|Behaviour features; rule-based tiers; expected loss|
-|Marts|`dim\_customer`, `fct\_customer\_month`, `fct\_customer\_risk`|Kimball star schema for the dashboard|
+|Staging|`stg_customers`, `stg_customer_month`|Apply data quality fixes; reshape six month columns into rows|
+|Intermediate|`int_customer_features`, `int_customer_risk`|Behaviour features; rule-based tiers; expected loss|
+|Marts|`dim_customer`, `fct_customer_month`, `fct_customer_risk`|Kimball star schema for the dashboard|
 
 **Business logic lives in dbt so every report shares one definition; Power Query only shapes the data for presentation.**
 
-&#x20;  !\[dbt lineage graph](docs/lineage.jpg)
+&#x20;  ![dbt lineage graph](docs/lineage.jpg)
 
 ## Data quality
 
-Profiled against DAMA's quality dimensions (uniqueness, completeness, validity, consistency, accuracy, timeliness). Every issue is logged with a decision in [`docs/data\_quality\_log.md`](docs/data_quality_log.md) and fixed in dbt. 11 dbt tests check keys, relationships, valid tiers, six months per customer, and that High risk defaults more than Watch and Watch more than Low.
+Profiled against DAMA's quality dimensions (uniqueness, completeness, validity, consistency, accuracy, timeliness). Every issue is logged with a decision in [`docs/data_quality_log.md`](docs/data_quality_log.md) and fixed in dbt. 11 dbt tests check keys, relationships, valid tiers, six months per customer, and that High risk defaults more than Watch and Watch more than Low.
 
 ## Risk method
 
@@ -67,15 +67,15 @@ Profiled against DAMA's quality dimensions (uniqueness, completeness, validity, 
 ## Run it
 
 ```bash
-python -m venv .venv \&\& source .venv/Scripts/activate   # Windows Git Bash
+python -m venv .venv && source .venv/Scripts/activate   # Windows Git Bash
 pip install -r requirements.txt
 gcloud auth application-default login
-cd credit\_dbt \&\& dbt build
+cd credit_dbt && dbt build
 ```
 
 Then open the Power BI file and refresh.
 
 ## Data source
 
-Yeh, I-C. (2009). *Default of credit card clients* \[Dataset]. UCI Machine Learning Repository.
+Yeh, I-C. (2009). *Default of credit card clients* [Dataset]. UCI Machine Learning Repository.
 
