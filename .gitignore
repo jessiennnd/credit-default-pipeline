@@ -1,0 +1,8 @@
+.venv/
+.ipynb_checkpoints/
+data/
+*.json
+credit_dbt/target/
+credit_dbt/logs/
+credit_dbt/dbt_packages/
+logs/

@@ -1,0 +1,23 @@
+name: 'credit_dbt'
+version: '1.0.0'
+profile: 'credit_dbt'
+
+model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+clean-targets: ["target", "dbt_packages"]
+
+vars:
+  lgd: 1.0   # loss given default: no recovery data, so assume 100% loss (an upper bound)
+
+models:
+  credit_dbt:
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: table
+      +schema: intermediate
+    marts:
+      +materialized: table
+      +schema: marts

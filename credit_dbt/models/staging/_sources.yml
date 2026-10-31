@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: credit_raw
+    database: credit-default-pipeline-512502
+    schema: credit_raw
+    tables:
+      - name: customers
+        description: "Raw UCI default of credit card clients data (Taiwan, Apr-Sep 2005), one row per customer"

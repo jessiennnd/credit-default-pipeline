@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: "One row per customer: descriptive attributes and risk tier for filtering"
+    columns:
+      - name: customer_id
+        data_tests: [unique, not_null]
+      - name: risk_tier
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['High', 'Watch', 'Low']
+
+  - name: fct_customer_risk
+    description: "One row per customer: exposure, tier PD and expected loss"
+    columns:
+      - name: customer_id
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_id
+
+  - name: fct_customer_month
+    description: "One row per customer per statement month (Apr-Sep 2005)"
+    columns:
+      - name: customer_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_id
