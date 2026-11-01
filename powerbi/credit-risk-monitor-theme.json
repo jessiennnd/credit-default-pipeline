@@ -1,0 +1,57 @@
+{
+  "name": "Credit Risk Monitor",
+  "dataColors": ["#2A78D6", "#D03B3B", "#C98500", "#8A919E", "#1F5FB8", "#1BAF7A", "#6250D6", "#EB6834"],
+  "background": "#FFFFFF",
+  "foreground": "#14171C",
+  "tableAccent": "#2A78D6",
+  "good": "#1BAF7A",
+  "neutral": "#C98500",
+  "bad": "#D03B3B",
+  "maximum": "#D03B3B",
+  "center": "#F3D9A4",
+  "minimum": "#FFFFFF",
+  "textClasses": {
+    "callout": { "fontSize": 24, "fontFace": "Segoe UI Semibold", "color": "#14171C" },
+    "title": { "fontSize": 12, "fontFace": "Segoe UI Semibold", "color": "#14171C" },
+    "header": { "fontSize": 11, "fontFace": "Segoe UI Semibold", "color": "#6B7280" },
+    "label": { "fontSize": 10, "fontFace": "Segoe UI", "color": "#14171C" }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [{ "show": false }],
+        "border": [{ "show": false }],
+        "title": [{ "show": false }],
+        "dropShadow": [{ "show": false }],
+        "valueAxis": [{ "gridlineColor": { "solid": { "color": "#E2E6ED" } }, "labelColor": { "solid": { "color": "#6B7280" } } }],
+        "categoryAxis": [{ "labelColor": { "solid": { "color": "#14171C" } } }]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#F4F6F9" } }, "transparency": 0 }],
+        "outspace": [{ "color": { "solid": { "color": "#F4F6F9" } } }]
+      }
+    },
+    "card": {
+      "*": {
+        "categoryLabels": [{ "show": false }],
+        "labels": [{ "color": { "solid": { "color": "#14171C" } }, "fontSize": 24, "fontFamily": "Segoe UI Semibold" }]
+      }
+    },
+    "slicer": {
+      "*": {
+        "header": [{ "show": false }],
+        "background": [{ "show": true, "color": { "solid": { "color": "#FFFFFF" } }, "transparency": 0 }],
+        "border": [{ "show": true, "color": { "solid": { "color": "#E2E6ED" } }, "radius": 8 }]
+      }
+    },
+    "tableEx": {
+      "*": {
+        "columnHeaders": [{ "fontColor": { "solid": { "color": "#6B7280" } }, "backColor": { "solid": { "color": "#FFFFFF" } }, "fontSize": 9 }],
+        "values": [{ "fontColorPrimary": { "solid": { "color": "#14171C" } }, "backColorPrimary": { "solid": { "color": "#FFFFFF" } }, "backColorSecondary": { "solid": { "color": "#FFFFFF" } }, "fontSize": 10 }],
+        "grid": [{ "gridHorizontal": true, "gridHorizontalColor": { "solid": { "color": "#E2E6ED" } }, "gridVertical": false }]
+      }
+    }
+  }
+}
