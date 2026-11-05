@@ -14,7 +14,7 @@ A Taiwanese card issuer (2005, illustrative scenario) only found out about defau
 |---|---|---|
 | How much could we lose next month? | **NT$334M** expected loss on NT$1.54B owed (21.7%) | Page 1 |
 | Is late payment getting worse? | **Yes.** Late payers more than doubled, from 10% in April to 23% in September | Page 1 |
-| Who should we review first? | **4,922 High-risk customers**, ranked by expected loss, each with the reason they were flagged | Page 2 |
+| Who should we review first? | **10,069 High and Watch customers** (NT$204M of expected loss), ranked so the biggest losses come first, each with the reason they were flagged | Page 2 |
 
 ![Review list](docs/dashboard_page2.png)
 
@@ -32,7 +32,7 @@ Raw CSV → BigQuery → dbt (clean → risk tiers → star schema) → Power BI
 
 - **Data quality first:** 13 checks against DAMA's quality dimensions, each logged with a decision in [`docs/data_quality_log.md`](docs/data_quality_log.md).
 - **dbt pipeline:** 7 models and 11 automated tests rebuild every table with one command, `dbt build`.
-- **Dashboard:** Power BI reads the final tables, so every number traces back to tested SQL.
+- **Dashboard:** Power BI reads the final dbt tables, so every number traces back to tested SQL. Power Query and DAX only format and add up; no risk logic lives in the report.
 
 ![dbt lineage graph](docs/lineage.jpg)
 
